@@ -1,12 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { useNavigate } from 'react-router'
+import { optionAns } from './FirstPage';
 
-const ResultPage = (props) => {
+const ResultPage = () => {
+  const {ans} = useContext(optionAns);
+  console.log(ans);
+  const navigate = useNavigate();
+
+  const tryAgain = () => {
+    navigate('/');
+  }
+
   return (
     <div className='first-page'>
 
-      <h1>Your Result</h1>
-      <h2>{props.ans}</h2>
-
+      <h1>Your Result {ans}</h1>
+      <button type='submit' onClick={tryAgain}>TryAgain</button>
     </div>
   )
 }
